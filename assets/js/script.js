@@ -61,10 +61,16 @@ function displaySearchHistory() {
 	for(var i=0; i<searchHistory.length; i++) {
 		var newBtn = $("<button></button>").text(searchHistory[i]);
 		newBtn.attr("type", "button");
-		newBtn.attr("class", "btn btn-secondary mt-2");
+		newBtn.attr("class", "btn btn-secondary mt-2 historyBtn");
 		$("#searchList").append(newBtn);
 	}
 }
+
+function handleHistorySearch(event) {
+	event.preventDefault();
+	getCoordinates($(this).text())
+}
+
 
 $("#citySubmit").on( "submit", function(event) {
 	event.preventDefault();
@@ -73,5 +79,7 @@ $("#citySubmit").on( "submit", function(event) {
   getCoordinates($("#city").val());
 	displaySearchHistory();
 } );
+
+$('#searchList').on('click', '.historyBtn', handleHistorySearch);
 
 displaySearchHistory();
