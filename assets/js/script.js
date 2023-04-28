@@ -31,9 +31,9 @@ function getWeather(lat, lon) {
 		.then(function (data) {//if successful, sets the data received as the text
 			$("#cityName").text(data.name + " " + dayjs().format("M/D/YYYY"));
 			$("#icon").attr("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");//displays icon as img
-			$("#temp").text("Temp: " + data.main.temp);
-			$("#wind").text("Wind: " + data.wind.speed);
-			$("#humidity").text("Humidity: " + data.main.humidity);
+			$("#temp").text("Temp: " + data.main.temp + " \xB0F");
+			$("#wind").text("Wind: " + data.wind.speed + " MPH");
+			$("#humidity").text("Humidity: " + data.main.humidity + "%");
 			getForecast(lat, lon);//passes latitude and longitude to another function
 		});
 }
@@ -53,9 +53,9 @@ function getForecast(lat, lon) {
 				//sets the text for the respective containers
 				$("#day"+counter).text(dayjs().add(counter, 'day').format("M/D/YYYY"));
 				$("#icon"+counter).attr("src", "http://openweathermap.org/img/wn/" + forecastDay.weather[0].icon + "@2x.png");
-				$("#temp"+counter).text("Temp: " + forecastDay.main.temp);
-				$("#wind"+counter).text("Wind: " + forecastDay.wind.speed);
-				$("#humidity"+counter).text("Humidity: " + forecastDay.main.humidity);
+				$("#temp"+counter).text("Temp: " + forecastDay.main.temp + " \xB0F");
+				$("#wind"+counter).text("Wind: " + forecastDay.wind.speed + " MPH");
+				$("#humidity"+counter).text("Humidity: " + forecastDay.main.humidity + "%");
 				counter++;
 			}
 			$("#weatherDisplay").css("visibility", "visible");//makes the whole display visible
