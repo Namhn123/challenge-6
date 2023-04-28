@@ -1,6 +1,8 @@
 var apiKey = "dd3a891209863bb45d12f6ff64e74adf";
 var searchHistory = JSON.parse(localStorage.getItem("search"));
-
+if (searchHistory == null) { //if there is no tasks in local storage, set each entry as empty string
+	searchHistory = [];
+}
 
 function getCoordinates(city) {
 	var coordinateUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + encodeURI(city) + "&limit=1&appid=" + apiKey;
@@ -55,13 +57,21 @@ function getForecast(lat, lon) {
 }
 
 function displaySearchHistory() {
-	
+	$("#searchList").empty();
+	for(var i=0; i<searchHistory.length; i++) {
+		var newBtn = $("<button></button>").text(searchHistory[i]);
+		newBtn.attr("type", "button");
+		newBtn.attr("class", "btn btn-secondary mt-2");
+		$("#searchList").append(newBtn);
+	}
 }
 
 $("#citySubmit").on( "submit", function(event) {
 	event.preventDefault();
+	searchHistory.unshift($("#city").val());
+	localStorage.setItem("search", JSON.stringify(searchHistory));
   getCoordinates($("#city").val());
-
+	displaySearchHistory();
 } );
 
 displaySearchHistory();

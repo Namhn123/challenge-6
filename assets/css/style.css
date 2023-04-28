@@ -7,6 +7,10 @@ label {
 	font-weight: bold;
 }
 
+ol {
+	list-style: none;
+}
+
 .btn {
 	width: 100%;
 }
