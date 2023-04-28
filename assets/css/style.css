@@ -1,0 +1,25 @@
+.gradient {
+  background-image: linear-gradient(to right, blue , darkblue);
+}
+
+label {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.btn {
+	width: 100%;
+}
+
+.container {
+	background-color: darkblue;
+	color:white;
+}
+
+#currentWeather {
+	border-style: solid;
+}
+
+#weatherDisplay {
+	visibility: hidden;
+}
