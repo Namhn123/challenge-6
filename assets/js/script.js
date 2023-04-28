@@ -7,7 +7,7 @@ if (searchHistory == null) { //if there is no list in local storage, set each en
 
 //gets the coordinates of a city
 function getCoordinates(city) {
-	var coordinateUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + encodeURI(city) + "&limit=1&appid=" + apiKey;
+	var coordinateUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + encodeURI(city) + "&limit=1&appid=" + apiKey;
 	//gets api data from url
 	fetch(coordinateUrl)
 		.then(function (response) {
